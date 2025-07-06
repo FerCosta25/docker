@@ -1,0 +1,11 @@
+FROM nginx:1.27.2
+
+RUN apt-get update && apt-get -y upgrade
+
+RUN groupadd -r fer && useradd -r -g fer fer
+
+RUN chown -R fer:fer /usr/share/nginx/html
+
+USER fer
+
+CMD ["bash", "-c", "echo Hello from appuser!"]
